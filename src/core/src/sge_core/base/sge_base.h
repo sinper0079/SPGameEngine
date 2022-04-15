@@ -38,6 +38,16 @@
 #include <EASTL/shared_ptr.h>
 #include <EASTL/weak_ptr.h>
 
+#include <d3d11.h>
+#include <d3dcompiler.h>
+#include <directxpackedvector.h>
+
+#ifdef _MSC_VER
+#pragma comment(lib, "d3dcompiler") // Automatically link with d3dcompiler.lib as we are using D3DCompile() below.
+#endif
+// include the Direct3D Library file
+#pragma comment (lib, "d3d11.lib")
+
 #include "sge_macro.h"
 
 //==== EASTL ====

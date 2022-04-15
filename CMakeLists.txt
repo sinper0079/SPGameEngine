@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-project(SPGameEngine)
+project(Sniper-GameEngine)
 
 find_package(fmt CONFIG REQUIRED)
 find_package(GLEW CONFIG REQUIRED)
