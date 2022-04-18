@@ -38,16 +38,6 @@
 #include <EASTL/shared_ptr.h>
 #include <EASTL/weak_ptr.h>
 
-#include <d3d11.h>
-#include <d3dcompiler.h>
-#include <directxpackedvector.h>
-
-#ifdef _MSC_VER
-#pragma comment(lib, "d3dcompiler") // Automatically link with d3dcompiler.lib as we are using D3DCompile() below.
-#endif
-// include the Direct3D Library file
-#pragma comment (lib, "d3d11.lib")
-
 #include "sge_macro.h"
 
 //==== EASTL ====
@@ -70,7 +60,7 @@ inline void* operator new[](size_t size, size_t alignment, size_t alignmentOffse
 
 namespace sge {
 
-template<class T> inline constexpr typename std::underlying_type<T>::type         enumInt(T  value) { return       static_cast<typename std::underlying_type<T>::type>(value); }
+template<class T> inline constexpr typename std::underlying_type<T>::type     enumInt(T  value) { return       static_cast<typename std::underlying_type<T>::type>(value); }
 template<class T> inline constexpr typename std::underlying_type<T>::type& enumIntRef(T& value) { return *reinterpret_cast<typename std::underlying_type<T>::type*>(&value); }
 template<class T> inline constexpr typename std::underlying_type<T>::type const& enumIntRef(const T& value) { return *reinterpret_cast<const typename std::underlying_type<T>::type*>(&value); }
 
@@ -79,12 +69,12 @@ template<class T> inline bool constexpr enumHas(const T& a, const T& b) { return
 template<class T> SGE_INLINE T* constCast(const T* v) { return const_cast<T*>(v); }
 template<class T> SGE_INLINE T& constCast(const T& v) { return const_cast<T&>(v); }
 
-using u8 = uint8_t;
+using u8  = uint8_t;
 using u16 = uint16_t;
 using u32 = uint32_t;
 using u64 = uint64_t;
 
-using i8 = int8_t;
+using i8  = int8_t;
 using i16 = int16_t;
 using i32 = int32_t;
 using i64 = int64_t;
@@ -169,6 +159,37 @@ private:
 
 	NonCopyable(const NonCopyable&) = delete;
 	void operator=(const NonCopyable&) = delete;
+};
+
+template<class T>
+class ComPtr : public NonCopyable {
+public:
+	ComPtr() = default;
+	ComPtr(const ComPtr& r) { ref(r._p); }
+	~ComPtr() noexcept { reset(nullptr); }
+
+	T* operator->() noexcept		{ return _p; }
+	operator T*() noexcept			{ return _p; }
+
+			T* ptr() noexcept		{ return _p; }
+	const	T* ptr() const noexcept	{ return _p; }
+
+	void reset(T* p) {
+		if (p == _p) return;
+		if (_p) {
+			_p->Release();
+			_p = nullptr;
+		}
+		if (_p) {
+			_p->AddRef();
+		}
+	}
+
+	T** ptrForInit() noexcept { reset(nullptr); return &_p; }
+
+	T* detach() { T* o = _p; _ p = nullptr; return o; }
+private:
+	T* _p = nullptr;
 };
 
 template<class T> inline void sge_delete(T* p) { delete p; }
