@@ -30,7 +30,8 @@ protected:
 	virtual void onEndRender() override;
 
 	virtual void onTestDraw() override;
-
+	virtual void onDraw(RenderCmd_Draw& cmd) override;
+	VertexLayout* CreateVertexLayout();
 	virtual void onClearColorAndDepthBuffer() override;
 	virtual void onSwapBuffers() override;
 };

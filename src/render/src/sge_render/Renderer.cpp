@@ -37,4 +37,9 @@ Renderer::~Renderer() {
 	_current = nullptr;
 }
 
+VertexLayout* Renderer::createVertexLayout()
+{
+	return nullptr;
+}
+
 }

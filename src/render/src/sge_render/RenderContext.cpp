@@ -17,8 +17,22 @@ void RenderContext::render() {
 	onEndRender();
 }
 
+void RenderContext::draw(RenderCmd_Draw& cmd)
+{
+
+	onBeginRender();
+	onClearColorAndDepthBuffer();
+
+	onDraw(cmd);
+
+	onSwapBuffers();
+	onEndRender();
+}
+
 RenderContext::RenderContext(CreateDesc& desc) {
+}
+
 
 }
 
-}
+

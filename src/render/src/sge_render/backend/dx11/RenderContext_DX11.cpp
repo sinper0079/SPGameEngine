@@ -104,20 +104,43 @@ void RenderContext_DX11::onTestDraw() {
 		u8 color[4];
 	};
 
+
 	static Vertex vertexData[] =
 	{
 		{ 0.0f,  0.5f, 0.0f, { 255, 0, 0, 255 }},
 		{ 0.5f, -0.5f, 0.0f, { 0, 255, 0, 255 }},
 		{-0.5f, -0.5f, 0.0f, { 0, 0, 255, 255 }}
 	};
-
 	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]);
+	Vector<u8> vertexBuf;
+//	vertexBuf.resize(sizeof(vertexData) / sizeof(u8));
+	for (int i=0;i< vertexCount; i++) {
+		u8 x = reinterpret_cast<u8>(&vertexData[i].x);
+		vertexBuf.emplace_back(x);
+		u8 y = reinterpret_cast<u8>(&vertexData[i].y);
+		vertexBuf.emplace_back(y);
+		u8 z = reinterpret_cast<u8>(&vertexData[i].z);
+		vertexBuf.emplace_back(z);
+		u8 lastu8 = 1;
+		vertexBuf.emplace_back(lastu8);
+		auto r= vertexData[i].color[0];
+		vertexBuf.emplace_back(r);
+		auto g = vertexData[i].color[1];
+		vertexBuf.emplace_back(g);
+		auto b = vertexData[i].color[2];
+		vertexBuf.emplace_back(b);
+		auto a = vertexData[i].color[3];
+		vertexBuf.emplace_back(a);
+	}
+	 
+
+	auto test = sizeof(vertexBuf);
 
 	if (!_testVertexBuffer) {
 
 		D3D11_BUFFER_DESC bd = {};
 		bd.Usage		  = D3D11_USAGE_DYNAMIC;
-		bd.ByteWidth	  = sizeof(Vertex) * vertexCount;
+		bd.ByteWidth	  = sizeof(Vertex)* vertexCount;
 		bd.BindFlags	  = D3D11_BIND_VERTEX_BUFFER;
 		bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 		hr = dev->CreateBuffer(&bd, nullptr, _testVertexBuffer.ptrForInit());
@@ -127,7 +150,7 @@ void RenderContext_DX11::onTestDraw() {
 		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
 		Util::throwIfError(hr);
 
-		memcpy(ms.pData, vertexData, bd.ByteWidth);
+		memcpy(ms.pData, &vertexBuf, bd.ByteWidth);
 		ctx->Unmap(_testVertexBuffer, 0);
 	}
 
@@ -172,6 +195,8 @@ void RenderContext_DX11::onTestDraw() {
 	viewport.Width		 = 800;
 	viewport.Height		 = 600;
 
+
+	
 	ctx->RSSetViewports(1, &viewport);
 
 	ctx->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
@@ -186,6 +211,115 @@ void RenderContext_DX11::onTestDraw() {
 	ctx->PSSetShader(_testPixelShader,  0, 0);
 
 	ctx->Draw(vertexCount, 0);
+}
+
+void RenderContext_DX11::onDraw(RenderCmd_Draw& cmd)
+{
+	auto* dev = _renderer->d3dDevice();
+	auto* ctx = _renderer->d3dDeviceContext();
+
+	HRESULT hr;
+
+	// testing
+	struct Vertex {
+		float x, y, z;
+		u8 color[4];
+	};
+
+	static Vertex vertexData[] =
+	{
+		{ 0.0f,  0.5f, 0.0f, { 255, 0, 0, 255 }},
+		{ 0.5f, -0.5f, 0.0f, { 0, 255, 0, 255 }},
+		{-0.5f, -0.5f, 0.0f, { 0, 0, 255, 255 }}
+	};
+
+
+
+	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]);
+
+	if (!_testVertexBuffer) {
+
+		D3D11_BUFFER_DESC bd = {};
+		bd.Usage = D3D11_USAGE_DYNAMIC;
+		bd.ByteWidth = sizeof(Vertex) * vertexCount;
+		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+		bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		hr = dev->CreateBuffer(&bd, nullptr, _testVertexBuffer.ptrForInit());
+		Util::throwIfError(hr);
+
+		D3D11_MAPPED_SUBRESOURCE ms = {};
+		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
+		Util::throwIfError(hr);
+
+		memcpy(ms.pData, vertexData, bd.ByteWidth);
+		ctx->Unmap(_testVertexBuffer, 0);
+	}
+
+	const wchar_t* shaderFile = L"Assets/Shaders/test.hlsl";
+
+	if (!_testVertexShader) {
+		ComPtr<ID3DBlob>	bytecode;
+		ComPtr<ID3DBlob>	errorMsg;
+		hr = D3DCompileFromFile(shaderFile, 0, 0, "vs_main", "vs_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
+		Util::throwIfError(hr);
+
+		hr = dev->CreateVertexShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testVertexShader.ptrForInit());
+		Util::throwIfError(hr);
+
+		D3D11_INPUT_ELEMENT_DESC inputDesc[] =
+		{
+			{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0},
+			{"COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
+		};
+		hr = dev->CreateInputLayout(inputDesc
+			, sizeof(inputDesc) / sizeof(inputDesc[0])
+			, bytecode->GetBufferPointer()
+			, bytecode->GetBufferSize()
+			, _testInputLayout.ptrForInit());
+		Util::throwIfError(hr);
+	}
+
+	if (!_testPixelShader) {
+		ComPtr<ID3DBlob>	bytecode;
+		ComPtr<ID3DBlob>	errorMsg;
+		hr = D3DCompileFromFile(shaderFile, 0, 0, "ps_main", "ps_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
+		Util::throwIfError(hr);
+
+		dev->CreatePixelShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testPixelShader.ptrForInit());
+		Util::throwIfError(hr);
+	}
+
+	// draw
+	D3D11_VIEWPORT viewport = {};
+	viewport.TopLeftX = 0;
+	viewport.TopLeftY = 0;
+	viewport.Width = 800;
+	viewport.Height = 600;
+
+
+
+	ctx->RSSetViewports(1, &viewport);
+
+	ctx->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	ctx->IASetInputLayout(_testInputLayout);
+
+	UINT stride = sizeof(Vertex);
+	UINT offset = 0;
+	ID3D11Buffer* pVBuffer[] = { _testVertexBuffer };
+	ctx->IASetVertexBuffers(0, 1, pVBuffer, &stride, &offset);
+
+	ctx->VSSetShader(_testVertexShader, 0, 0);
+	ctx->PSSetShader(_testPixelShader, 0, 0);
+
+	ctx->Draw(vertexCount, 0);
+
+}
+
+VertexLayout* RenderContext_DX11::CreateVertexLayout()
+{
+	
+
+	return nullptr;
 }
 
 void RenderContext_DX11::onClearColorAndDepthBuffer() {

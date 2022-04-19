@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Render_Common.h"
-
+#include "RenderCommand.h"
 namespace sge {
 
 class RenderContext;
@@ -31,7 +31,7 @@ public:
 	const RenderAdapterInfo&	adapterInfo() const { return _adapterInfo; }
 
 	virtual RenderContext*	onCreateContext(RenderContext_CreateDesc& desc) = 0;
-
+	VertexLayout* createVertexLayout();
 	bool vsync() const		{ return _vsync; }
 
 protected:
