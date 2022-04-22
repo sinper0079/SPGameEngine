@@ -60,7 +60,12 @@ namespace sge {
 	};
 	
 	template<class T>
-	struct Tuple3 {T x,y,z;};
+	struct Tuple3 {
+		T x,y,z;
+		Tuple3 (T _x, T _y, T _z){
+			x= _x ; y= _y; z= _z;
+		};
+	;};
 	using Tuple3f = Tuple3 <float>;
 	using Tuple3d = Tuple3 <double>;
 
@@ -94,8 +99,9 @@ namespace sge {
 
 	public:
 		static const int kMaxUV = 8;
-		Vector<Vec3f> pos;
-		Vector<Vec2f> uv[kMaxUV];
+		Vector<Tuple3f> pos;
+	//	Vector<Vec3f> pos;
+	//	Vector<Vec2f> uv[kMaxUV];
 		Vector<Color4b>color;
 	};
 

@@ -123,30 +123,33 @@ void RenderContext_DX11::onTestDraw() {
 	//	stride += sizeof(Color4b);
 	//}
 
-	static Vertex vertexData[] =
-	{
-		{ 0.0f,  0.5f, 0.0f, { 255, 0, 0, 255 }},
-		{ 0.5f, -0.5f, 0.0f, { 0, 255, 0, 255 }},
-		{-0.5f, -0.5f, 0.0f, { 0, 0, 255, 255 }}
-	};
+
+	EditMesh mesh;
+	
+	mesh.pos.emplace_back(Tuple3f(0.0f, 0.5f, 0.0f));
+	mesh.pos.emplace_back(Tuple3f(0.5f, -0.5f, 0.0f));
+	mesh.pos.emplace_back(Tuple3f(-0.5f, -0.5f, 0.0f));
+	mesh.color.emplace_back<Color4b>({ 255, 0, 0, 255 });
+	mesh.color.emplace_back<Color4b>({ 0, 255, 0, 255 });
+	mesh.color.emplace_back<Color4b>({ 0, 0, 255, 255 });
 
 	int _stride=0;
 		_stride += sizeof(Tuple3f);
 		_stride += sizeof(Color4b);
 
-	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]); 
+	UINT vertexCount = mesh.pos.size();
 	Vector<u8> vertexBuf;
 	vertexBuf.resize(_stride*vertexCount);
 	 u8* dst = vertexBuf.data(); // dst of u8 array direct point to memory
 
 	for (size_t i=0 ;i <vertexCount; i++){
-		*reinterpret_cast<Tuple3f*> (dst) = vertexData[i].pos;
+		*reinterpret_cast<Tuple3f*> (dst) = mesh.pos[i];
 		dst += sizeof(Tuple3f); 
 
 		//ConvertToByteArray<Tuple3f, Vertex, vertexCount>(i, vertexData);
 
 		// if has color 
-		*reinterpret_cast<Color4b*> (dst) = vertexData[i].color;
+		*reinterpret_cast<Color4b*> (dst) = mesh.color[i];
 		dst += sizeof(Color4b);
 	}
 

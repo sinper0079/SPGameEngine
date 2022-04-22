@@ -8,15 +8,15 @@ public:
 	void onCreate(CreateDesc& desc) {
 		Base::onCreate(desc);
 
-		EditMesh mesh;
+		//EditMesh mesh;
 
-		mesh.pos.emplace_back<Vec3f>({ 0.0f, 0.5f, 0.0f });
-		mesh.pos.emplace_back<Vec3f>({ 0.5f, -0.5f, 0.0f });
-		mesh.pos.emplace_back<Vec3f>({ -0.5f, -0.5f, 0.0f });
-		mesh.color.emplace_back<Color4b>({ 255, 0, 0, 255 });
-		mesh.color.emplace_back<Color4b>({ 0, 255, 0, 255 });
-		mesh.color.emplace_back<Color4b>({ 0, 0, 255, 255 });
-		renderMesh.create(mesh);
+		//mesh.pos.emplace_back<Vec3f>({ 0.0f, 0.5f, 0.0f });
+		//mesh.pos.emplace_back<Vec3f>({ 0.5f, -0.5f, 0.0f });
+		//mesh.pos.emplace_back<Vec3f>({ -0.5f, -0.5f, 0.0f });
+		//mesh.color.emplace_back<Color4b>({ 255, 0, 0, 255 });
+		//mesh.color.emplace_back<Color4b>({ 0, 255, 0, 255 });
+		//mesh.color.emplace_back<Color4b>({ 0, 0, 255, 255 });
+		//renderMesh.create(mesh);
 
 		RenderContext::CreateDesc renderContextDesc;
 		renderContextDesc.window = this;
