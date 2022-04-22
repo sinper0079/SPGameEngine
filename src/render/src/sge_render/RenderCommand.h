@@ -61,10 +61,14 @@ namespace sge {
 	
 	template<class T>
 	struct Tuple3 {T x,y,z;};
-	
+	using Tuple3f = Tuple3 <float>;
+	using Tuple3d = Tuple3 <double>;
 
-	using Tuple3f  = Tuple3 <float>;
-	using Tuple3d =  Tuple3 <double>;
+	template<class T>
+	struct Tuple2 { T x, y; };
+	using Tuple2f = Tuple2 <float>;
+	using Tuple2d = Tuple2 <double>;
+
 
 	struct Vertex_PosColor {
 		Tuple3f pos;

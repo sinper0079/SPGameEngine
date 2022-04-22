@@ -92,6 +92,12 @@ void RenderContext_DX11::onEndRender() {
 
 }
 
+template <class T, class V, size_t size>
+void ConvertToByteArray(size_t i, const V(&array)[size]) {
+	*reinterpret_cast<T*> (dst) = vertexData[i].pos;
+	dst += sizeof(T);
+}
+
 void RenderContext_DX11::onTestDraw() {
 	auto* dev = _renderer->d3dDevice();
 	auto* ctx = _renderer->d3dDeviceContext();
@@ -100,10 +106,22 @@ void RenderContext_DX11::onTestDraw() {
 
 // testing
 	struct Vertex {
-		float x,y,z;
-		u8 color[4];
+		Tuple3f pos;
+		Color4b color;
 	};
 
+	//EditMesh mesh; 
+	//int stride=0;
+	//if (mesh.pos.size()){
+	//	stride += sizeof(Vec3f);
+	//}
+	//
+	//if (mesh.uv.size()) {
+	//	stride += sizeof(Vec2f);
+	//}
+	//if (mesh.color.size()){
+	//	stride += sizeof(Color4b);
+	//}
 
 	static Vertex vertexData[] =
 	{
@@ -111,31 +129,28 @@ void RenderContext_DX11::onTestDraw() {
 		{ 0.5f, -0.5f, 0.0f, { 0, 255, 0, 255 }},
 		{-0.5f, -0.5f, 0.0f, { 0, 0, 255, 255 }}
 	};
-	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]);
+
+	int _stride=0;
+		_stride += sizeof(Tuple3f);
+		_stride += sizeof(Color4b);
+
+	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]); 
 	Vector<u8> vertexBuf;
-//	vertexBuf.resize(sizeof(vertexData) / sizeof(u8));
-	for (int i=0;i< vertexCount; i++) {
-		u8 x = reinterpret_cast<u8>(&vertexData[i].x);
-		vertexBuf.emplace_back(x);
-		u8 y = reinterpret_cast<u8>(&vertexData[i].y);
-		vertexBuf.emplace_back(y);
-		u8 z = reinterpret_cast<u8>(&vertexData[i].z);
-		vertexBuf.emplace_back(z);
-		u8 lastu8 = 1;
-		vertexBuf.emplace_back(lastu8);
-		auto r= vertexData[i].color[0];
-		vertexBuf.emplace_back(r);
-		auto g = vertexData[i].color[1];
-		vertexBuf.emplace_back(g);
-		auto b = vertexData[i].color[2];
-		vertexBuf.emplace_back(b);
-		auto a = vertexData[i].color[3];
-		vertexBuf.emplace_back(a);
+	vertexBuf.resize(_stride*vertexCount);
+	 u8* dst = vertexBuf.data(); // dst of u8 array direct point to memory
+
+	for (size_t i=0 ;i <vertexCount; i++){
+		*reinterpret_cast<Tuple3f*> (dst) = vertexData[i].pos;
+		dst += sizeof(Tuple3f); 
+
+		//ConvertToByteArray<Tuple3f, Vertex, vertexCount>(i, vertexData);
+
+		// if has color 
+		*reinterpret_cast<Color4b*> (dst) = vertexData[i].color;
+		dst += sizeof(Color4b);
 	}
-	 
 
-	auto test = sizeof(vertexBuf);
-
+	Vector<u8>* vertexBufPtr = &vertexBuf;
 	if (!_testVertexBuffer) {
 
 		D3D11_BUFFER_DESC bd = {};
@@ -150,7 +165,7 @@ void RenderContext_DX11::onTestDraw() {
 		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
 		Util::throwIfError(hr);
 
-		memcpy(ms.pData, &vertexBuf, bd.ByteWidth);
+		memcpy(ms.pData, vertexBufPtr, bd.ByteWidth);
 		ctx->Unmap(_testVertexBuffer, 0);
 	}
 
