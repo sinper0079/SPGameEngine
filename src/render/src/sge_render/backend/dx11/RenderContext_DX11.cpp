@@ -126,13 +126,14 @@ void RenderContext_DX11::onTestDraw() {
 
 	EditMesh mesh;
 	
+	mesh.pos.emplace_back(Tuple3f(0.0f, 0.0f, 0.0f));
 	mesh.pos.emplace_back(Tuple3f(0.0f, 0.5f, 0.0f));
-	mesh.pos.emplace_back(Tuple3f(0.5f, -0.5f, 0.0f));
-	mesh.pos.emplace_back(Tuple3f(-0.5f, -0.5f, 0.0f));
+	mesh.pos.emplace_back(Tuple3f(0.5f, 0.5f, 0.0f));
+	mesh.pos.emplace_back(Tuple3f(0.5f, 0.0f, 0.0f));
 	mesh.color.emplace_back<Color4b>({ 255, 0, 0, 255 });
 	mesh.color.emplace_back<Color4b>({ 0, 255, 0, 255 });
 	mesh.color.emplace_back<Color4b>({ 0, 0, 255, 255 });
-
+	mesh.color.emplace_back<Color4b>({ 0, 255, 0 , 255 });
 	int _stride=0;
 		_stride += sizeof(Tuple3f);
 		_stride += sizeof(Color4b);
@@ -153,7 +154,7 @@ void RenderContext_DX11::onTestDraw() {
 		dst += sizeof(Color4b);
 	}
 
-	Vector<u8>* vertexBufPtr = &vertexBuf;
+
 	if (!_testVertexBuffer) {
 
 		D3D11_BUFFER_DESC bd = {};
@@ -168,7 +169,7 @@ void RenderContext_DX11::onTestDraw() {
 		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
 		Util::throwIfError(hr);
 
-		memcpy(ms.pData, vertexBufPtr, bd.ByteWidth);
+		memcpy(ms.pData, vertexBuf.data(), bd.ByteWidth);
 		ctx->Unmap(_testVertexBuffer, 0);
 	}
 
