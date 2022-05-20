@@ -6,14 +6,14 @@ namespace sge {
 
 Renderer* Renderer::_current = nullptr;
 
-Renderer::CreateDesc::CreateDesc() {
+Renderer::CreateDesc::CreateDesc() 
+	: multithread(false)
+{
 #if SGE_OS_WINDOWS
 	apiType = ApiType::DX11;
 #else
 	apiType = ApiType::None;
 #endif
-
-	multithread = false;
 }
 
 Renderer* Renderer::create(CreateDesc& desc) {
@@ -35,11 +35,6 @@ Renderer::Renderer() {
 Renderer::~Renderer() {
 	SGE_ASSERT(_current == this);
 	_current = nullptr;
-}
-
-VertexLayout* Renderer::createVertexLayout()
-{
-	return nullptr;
 }
 
 }

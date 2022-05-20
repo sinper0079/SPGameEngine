@@ -1,5 +1,6 @@
 #include "RenderContext_DX11.h"
 #include "Renderer_DX11.h"
+#include "RenderGpuBuffer_DX11.h"
 
 namespace sge {
 
@@ -34,13 +35,68 @@ RenderContext_DX11::RenderContext_DX11(CreateDesc& desc)
 	}
 }
 
+void RenderContext_DX11::onCmd_ClearFrameBuffers(RenderCommand_ClearFrameBuffers& cmd) {
+	auto* ctx = _renderer->d3dDeviceContext();
+	if (_renderTargetView && cmd.color.has_value()) {
+		ctx->ClearRenderTargetView(_renderTargetView, cmd.color->data);
+	}
+	if (_depthStencilView && cmd.depth.has_value()) {
+		ctx->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, *cmd.depth, 0);
+	}
+}
+
+void RenderContext_DX11::onCmd_DrawCall(RenderCommand_DrawCall& cmd) {
+	if (!cmd.vertexLayout) { SGE_ASSERT(false); return; }
+
+	auto* vertexBuffer = static_cast<RenderGpuBuffer_DX11*>(cmd.vertexBuffer.ptr());
+	if (!vertexBuffer) { SGE_ASSERT(false); return; }
+
+	if (cmd.vertexCount <= 0) { SGE_ASSERT(false); return; }
+	if (cmd.primitive == RenderPrimitiveType::None) { SGE_ASSERT(false); return; }
+
+	RenderGpuBuffer_DX11* indexBuffer = nullptr;
+	if (cmd.indexCount > 0) {
+		indexBuffer = static_cast<RenderGpuBuffer_DX11*>(cmd.indexBuffer.ptr());
+		if (!indexBuffer) { SGE_ASSERT(false); return; }
+	}
+
+	_setTestShaders();
+
+	auto* ctx = _renderer->d3dDeviceContext();
+	auto primitive = Util::getDxPrimitiveTopology(cmd.primitive);
+	ctx->IASetPrimitiveTopology(primitive);
+
+	auto* inputLayout = _getTestInputLayout(cmd.vertexLayout);
+	if (!inputLayout) { SGE_ASSERT(false); return; }
+
+	ctx->IASetInputLayout(inputLayout);
+
+	UINT stride = static_cast<UINT>(cmd.vertexLayout->stride);
+	UINT offset = 0;
+	UINT vertexCount = static_cast<UINT>(cmd.vertexCount);
+	UINT indexCount  = static_cast<UINT>(cmd.indexCount);
+
+	DX11_ID3DBuffer* ppVertexBuffers[] = { vertexBuffer->d3dBuf() };
+	ctx->IASetVertexBuffers(0, 1, ppVertexBuffers, &stride, &offset);
+
+	if (indexCount > 0) {
+		auto indexType = Util::getDxFormat(cmd.indexType);
+		ctx->IASetIndexBuffer(indexBuffer->d3dBuf(), indexType, 0);
+		ctx->DrawIndexed(indexCount, 0, 0);
+	} else {
+		ctx->Draw(vertexCount, 0);
+	}
+}
+
+void RenderContext_DX11::onCmd_SwapBuffers(RenderCommand_SwapBuffers& cmd) {
+	auto hr = _swapChain->Present(_renderer->vsync() ? 1 : 0, 0);
+	Util::throwIfError(hr);
+}
+
 void RenderContext_DX11::_createRenderTarget() {
 	auto* renderer = Renderer_DX11::current();
 	auto* dev = renderer->d3dDevice();
 	HRESULT hr;
-
-	hr = _swapChain->ResizeBuffers(0, 800, 600, DXGI_FORMAT_UNKNOWN, 0);
-	Util::throwIfError(hr);
 
 	ComPtr<ID3D11Texture2D> backBuffer;
 	hr = _swapChain->GetBuffer(0, IID_PPV_ARGS(backBuffer.ptrForInit()));
@@ -77,6 +133,17 @@ void RenderContext_DX11::_createRenderTarget() {
 	Util::throwIfError(hr);
 }
 
+void RenderContext_DX11::onSetFrameBufferSize(Vec2f newSize) {
+	_renderTargetView.reset(nullptr); // release buffer and render target view before resize
+
+	auto hr = _swapChain->ResizeBuffers(0
+								, static_cast<UINT>(Math::max(0.0f, newSize.x))
+								, static_cast<UINT>(Math::max(0.0f, newSize.y))
+								, DXGI_FORMAT_UNKNOWN
+								, 0);
+	Util::throwIfError(hr);
+}
+
 void RenderContext_DX11::onBeginRender() {
 	auto* ctx = _renderer->d3dDeviceContext();
 	if (!_renderTargetView) {
@@ -86,94 +153,26 @@ void RenderContext_DX11::onBeginRender() {
 	DX11_ID3DRenderTargetView* rt[] = { _renderTargetView };
 //	ctx->OMSetRenderTargets(1, rt, _depthStencilView);
 	ctx->OMSetRenderTargets(1, rt, nullptr);
+
+	D3D11_VIEWPORT viewport = {};
+	viewport.TopLeftX	 = 0;
+	viewport.TopLeftY	 = 0;
+	viewport.Width		 = _frameBufferSize.x;
+	viewport.Height		 = _frameBufferSize.y;
+
+	ctx->RSSetViewports(1, &viewport);
 }
 
 void RenderContext_DX11::onEndRender() {
 
 }
 
-template <class T, class V, size_t size>
-void ConvertToByteArray(size_t i, const V(&array)[size]) {
-	*reinterpret_cast<T*> (dst) = vertexData[i].pos;
-	dst += sizeof(T);
-}
+void RenderContext_DX11::_setTestShaders() {
+	HRESULT hr;
+	const wchar_t* shaderFile = L"Assets/Shaders/test.hlsl";
 
-void RenderContext_DX11::onTestDraw() {
 	auto* dev = _renderer->d3dDevice();
 	auto* ctx = _renderer->d3dDeviceContext();
-
-	HRESULT hr;
-
-// testing
-	struct Vertex {
-		Tuple3f pos;
-		Color4b color;
-	};
-
-	//EditMesh mesh; 
-	//int stride=0;
-	//if (mesh.pos.size()){
-	//	stride += sizeof(Vec3f);
-	//}
-	//
-	//if (mesh.uv.size()) {
-	//	stride += sizeof(Vec2f);
-	//}
-	//if (mesh.color.size()){
-	//	stride += sizeof(Color4b);
-	//}
-
-
-	EditMesh mesh;
-	
-	mesh.pos.emplace_back(Tuple3f(0.0f, 0.0f, 0.0f));
-	mesh.pos.emplace_back(Tuple3f(0.0f, 0.5f, 0.0f));
-	mesh.pos.emplace_back(Tuple3f(0.5f, 0.5f, 0.0f));
-	mesh.pos.emplace_back(Tuple3f(0.5f, 0.0f, 0.0f));
-	mesh.color.emplace_back<Color4b>({ 255, 0, 0, 255 });
-	mesh.color.emplace_back<Color4b>({ 0, 255, 0, 255 });
-	mesh.color.emplace_back<Color4b>({ 0, 0, 255, 255 });
-	mesh.color.emplace_back<Color4b>({ 0, 255, 0 , 255 });
-	int _stride=0;
-		_stride += sizeof(Tuple3f);
-		_stride += sizeof(Color4b);
-
-	UINT vertexCount = mesh.pos.size();
-	Vector<u8> vertexBuf;
-	vertexBuf.resize(_stride*vertexCount);
-	 u8* dst = vertexBuf.data(); // dst of u8 array direct point to memory
-
-	for (size_t i=0 ;i <vertexCount; i++){
-		*reinterpret_cast<Tuple3f*> (dst) = mesh.pos[i];
-		dst += sizeof(Tuple3f); 
-
-		//ConvertToByteArray<Tuple3f, Vertex, vertexCount>(i, vertexData);
-
-		// if has color 
-		*reinterpret_cast<Color4b*> (dst) = mesh.color[i];
-		dst += sizeof(Color4b);
-	}
-
-
-	if (!_testVertexBuffer) {
-
-		D3D11_BUFFER_DESC bd = {};
-		bd.Usage		  = D3D11_USAGE_DYNAMIC;
-		bd.ByteWidth	  = sizeof(Vertex)* vertexCount;
-		bd.BindFlags	  = D3D11_BIND_VERTEX_BUFFER;
-		bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		hr = dev->CreateBuffer(&bd, nullptr, _testVertexBuffer.ptrForInit());
-		Util::throwIfError(hr);
-
-		D3D11_MAPPED_SUBRESOURCE ms = {};
-		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
-		Util::throwIfError(hr);
-
-		memcpy(ms.pData, vertexBuf.data(), bd.ByteWidth);
-		ctx->Unmap(_testVertexBuffer, 0);
-	}
-
-	const wchar_t* shaderFile = L"Assets/Shaders/test.hlsl";
 
 	if (!_testVertexShader) {
 		ComPtr<ID3DBlob>	bytecode;
@@ -181,19 +180,9 @@ void RenderContext_DX11::onTestDraw() {
 		hr = D3DCompileFromFile(shaderFile, 0, 0, "vs_main", "vs_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
 		Util::throwIfError(hr);
 
-		hr = dev->CreateVertexShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testVertexShader.ptrForInit());
-		Util::throwIfError(hr);
+		_testVertexShaderBytecode = bytecode;
 
-		D3D11_INPUT_ELEMENT_DESC inputDesc[] =
-		{
-			{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-			{"COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
-		};
-		hr = dev->CreateInputLayout(inputDesc
-									, sizeof(inputDesc) / sizeof(inputDesc[0])
-									, bytecode->GetBufferPointer()
-									, bytecode->GetBufferSize()
-									, _testInputLayout.ptrForInit());
+		hr = dev->CreateVertexShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testVertexShader.ptrForInit());
 		Util::throwIfError(hr);
 	}
 
@@ -203,159 +192,121 @@ void RenderContext_DX11::onTestDraw() {
 		hr = D3DCompileFromFile(shaderFile, 0, 0, "ps_main", "ps_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
 		Util::throwIfError(hr);
 
-		dev->CreatePixelShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testPixelShader.ptrForInit());
+		hr = dev->CreatePixelShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testPixelShader.ptrForInit());
 		Util::throwIfError(hr);
 	}
 
-// draw
-	D3D11_VIEWPORT viewport = {};
-	viewport.TopLeftX	 = 0;
-	viewport.TopLeftY	 = 0;
-	viewport.Width		 = 800;
-	viewport.Height		 = 600;
+	if (!_testRasterizerState) {
+		D3D11_RASTERIZER_DESC rasterDesc = {};
+		rasterDesc.AntialiasedLineEnable = true;
+		rasterDesc.CullMode = D3D11_CULL_NONE;
+		rasterDesc.DepthBias = 0;
+		rasterDesc.DepthBiasClamp = 0.0f;
+		rasterDesc.DepthClipEnable = true;
 
+		bool wireframe = true;
+		rasterDesc.FillMode = wireframe ? D3D11_FILL_WIREFRAME : D3D11_FILL_SOLID;
 
+		rasterDesc.FrontCounterClockwise = true;
+		rasterDesc.MultisampleEnable = false;
+		rasterDesc.ScissorEnable = false;
+		rasterDesc.SlopeScaledDepthBias = 0.0f;
+
+		hr = dev->CreateRasterizerState(&rasterDesc, _testRasterizerState.ptrForInit());
+		Util::throwIfError(hr);
+	}
+
+	if (!_testDepthStencilState) {
+		D3D11_DEPTH_STENCIL_DESC depthStencilDesc = {};
+		bool depthTest = false;
+		if (depthTest) {
+			depthStencilDesc.DepthEnable	= true;
+			depthStencilDesc.DepthFunc		= D3D11_COMPARISON_LESS;
+		} else {
+			depthStencilDesc.DepthEnable	= false;
+		}
+
+		depthStencilDesc.DepthWriteMask		= D3D11_DEPTH_WRITE_MASK_ALL;
+		depthStencilDesc.StencilEnable		= false;
+		depthStencilDesc.StencilReadMask	= 0xFF;
+		depthStencilDesc.StencilWriteMask	= 0xFF;
+
+		hr = dev->CreateDepthStencilState(&depthStencilDesc, _testDepthStencilState.ptrForInit());
+		Util::throwIfError(hr);
+	}
+
+	if (!_testBlendState) {
+		D3D11_BLEND_DESC blendStateDesc = {};
+		blendStateDesc.AlphaToCoverageEnable  = false;
+		blendStateDesc.IndependentBlendEnable = false;
+		auto& rtDesc = blendStateDesc.RenderTarget[0];
+
+		rtDesc.RenderTargetWriteMask = D3D11_COLOR_WRITE_ENABLE_ALL;
+		bool blendEnable = true;
+		if (blendEnable) {
+			rtDesc.BlendEnable	  = true;
+			rtDesc.BlendOp        = D3D11_BLEND_OP_ADD;
+			rtDesc.BlendOpAlpha   = D3D11_BLEND_OP_ADD;
+			rtDesc.SrcBlend       = D3D11_BLEND_SRC_ALPHA;
+			rtDesc.DestBlend      = D3D11_BLEND_INV_SRC_ALPHA;
+			rtDesc.SrcBlendAlpha  = D3D11_BLEND_SRC_ALPHA;
+			rtDesc.DestBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
+		}else{
+			rtDesc.BlendEnable	  = false;
+		}
+
+		hr = dev->CreateBlendState(&blendStateDesc, _testBlendState.ptrForInit());
+		Util::throwIfError(hr);
+	}
+
+	ctx->RSSetState(_testRasterizerState);
+	ctx->OMSetDepthStencilState(_testDepthStencilState, 1);
 	
-	ctx->RSSetViewports(1, &viewport);
-
-	ctx->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	ctx->IASetInputLayout(_testInputLayout);
-
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	ID3D11Buffer* pVBuffer[] = { _testVertexBuffer };
-	ctx->IASetVertexBuffers(0, 1, pVBuffer, &stride, &offset);
+	Color4f blendColor(1,1,1,1);
+	ctx->OMSetBlendState(_testBlendState, blendColor.data, 0xffffffff);
 
 	ctx->VSSetShader(_testVertexShader, 0, 0);
 	ctx->PSSetShader(_testPixelShader,  0, 0);
-
-	ctx->Draw(vertexCount, 0);
 }
 
-void RenderContext_DX11::onDraw(RenderCmd_Draw& cmd)
-{
+void RenderContext_DX11::onCommit(RenderCommandBuffer& cmdBuf) {
+	_dispatch(this, cmdBuf);
+}
+
+DX11_ID3DInputLayout* RenderContext_DX11::_getTestInputLayout(const VertexLayout* src) {
+	if (!src) return nullptr;
+
+	auto it = _testInputLayouts.find(src);
+	if (it != _testInputLayouts.end()) {
+		return it->second;
+	}
+
+	Vector_<D3D11_INPUT_ELEMENT_DESC, 32> inputDesc;
+
+	for (auto& e : src->elements) {
+		auto& dst = inputDesc.emplace_back();
+		auto semanticType			= Vertex_SemanticUtil::getType(e.semantic);
+		dst.SemanticName			= Util::getDxSemanticName(semanticType);
+		dst.SemanticIndex			= Vertex_SemanticUtil::getIndex(e.semantic);
+		dst.Format					= Util::getDxFormat(e.dataType);
+		dst.InputSlot				= 0;
+		dst.AlignedByteOffset		= e.offset;
+		dst.InputSlotClass			= D3D11_INPUT_PER_VERTEX_DATA;
+		dst.InstanceDataStepRate	= 0;
+	}
+
+	ComPtr<DX11_ID3DInputLayout>	outLayout;
+
 	auto* dev = _renderer->d3dDevice();
-	auto* ctx = _renderer->d3dDeviceContext();
-
-	HRESULT hr;
-
-	// testing
-	struct Vertex {
-		float x, y, z;
-		u8 color[4];
-	};
-
-	static Vertex vertexData[] =
-	{
-		{ 0.0f,  0.5f, 0.0f, { 255, 0, 0, 255 }},
-		{ 0.5f, -0.5f, 0.0f, { 0, 255, 0, 255 }},
-		{-0.5f, -0.5f, 0.0f, { 0, 0, 255, 255 }}
-	};
-
-
-
-	UINT vertexCount = sizeof(vertexData) / sizeof(vertexData[0]);
-
-	if (!_testVertexBuffer) {
-
-		D3D11_BUFFER_DESC bd = {};
-		bd.Usage = D3D11_USAGE_DYNAMIC;
-		bd.ByteWidth = sizeof(Vertex) * vertexCount;
-		bd.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-		bd.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
-		hr = dev->CreateBuffer(&bd, nullptr, _testVertexBuffer.ptrForInit());
-		Util::throwIfError(hr);
-
-		D3D11_MAPPED_SUBRESOURCE ms = {};
-		hr = ctx->Map(_testVertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &ms);
-		Util::throwIfError(hr);
-
-		memcpy(ms.pData, vertexData, bd.ByteWidth);
-		ctx->Unmap(_testVertexBuffer, 0);
-	}
-
-	const wchar_t* shaderFile = L"Assets/Shaders/test.hlsl";
-
-	if (!_testVertexShader) {
-		ComPtr<ID3DBlob>	bytecode;
-		ComPtr<ID3DBlob>	errorMsg;
-		hr = D3DCompileFromFile(shaderFile, 0, 0, "vs_main", "vs_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
-		Util::throwIfError(hr);
-
-		hr = dev->CreateVertexShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testVertexShader.ptrForInit());
-		Util::throwIfError(hr);
-
-		D3D11_INPUT_ELEMENT_DESC inputDesc[] =
-		{
-			{"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0,  0, D3D11_INPUT_PER_VERTEX_DATA, 0},
-			{"COLOR",    0, DXGI_FORMAT_R8G8B8A8_UNORM,  0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0},
-		};
-		hr = dev->CreateInputLayout(inputDesc
-			, sizeof(inputDesc) / sizeof(inputDesc[0])
-			, bytecode->GetBufferPointer()
-			, bytecode->GetBufferSize()
-			, _testInputLayout.ptrForInit());
-		Util::throwIfError(hr);
-	}
-
-	if (!_testPixelShader) {
-		ComPtr<ID3DBlob>	bytecode;
-		ComPtr<ID3DBlob>	errorMsg;
-		hr = D3DCompileFromFile(shaderFile, 0, 0, "ps_main", "ps_4_0", 0, 0, bytecode.ptrForInit(), errorMsg.ptrForInit());
-		Util::throwIfError(hr);
-
-		dev->CreatePixelShader(bytecode->GetBufferPointer(), bytecode->GetBufferSize(), nullptr, _testPixelShader.ptrForInit());
-		Util::throwIfError(hr);
-	}
-
-	// draw
-	D3D11_VIEWPORT viewport = {};
-	viewport.TopLeftX = 0;
-	viewport.TopLeftY = 0;
-	viewport.Width = 800;
-	viewport.Height = 600;
-
-
-
-	ctx->RSSetViewports(1, &viewport);
-
-	ctx->IASetPrimitiveTopology(D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	ctx->IASetInputLayout(_testInputLayout);
-
-	UINT stride = sizeof(Vertex);
-	UINT offset = 0;
-	ID3D11Buffer* pVBuffer[] = { _testVertexBuffer };
-	ctx->IASetVertexBuffers(0, 1, pVBuffer, &stride, &offset);
-
-	ctx->VSSetShader(_testVertexShader, 0, 0);
-	ctx->PSSetShader(_testPixelShader, 0, 0);
-
-	ctx->Draw(vertexCount, 0);
-
-}
-
-VertexLayout* RenderContext_DX11::CreateVertexLayout()
-{
-	
-
-	return nullptr;
-}
-
-void RenderContext_DX11::onClearColorAndDepthBuffer() {
-	auto* ctx = _renderer->d3dDeviceContext();
-	if (_renderTargetView) {
-		float color[4] = {0, 0, 0.5f, 1};
-		ctx->ClearRenderTargetView(_renderTargetView,  color);
-	}
-	if (_depthStencilView) {
-		float depth = 0;
-		ctx->ClearDepthStencilView(_depthStencilView, D3D11_CLEAR_DEPTH, depth, 0);
-	}
-}
-
-void RenderContext_DX11::onSwapBuffers() {
-	auto hr = _swapChain->Present(_renderer->vsync() ? 1 : 0, 0);
+	auto hr = dev->CreateInputLayout(inputDesc.data()
+									, static_cast<UINT>(inputDesc.size())
+									, _testVertexShaderBytecode->GetBufferPointer()
+									, _testVertexShaderBytecode->GetBufferSize()
+									, outLayout.ptrForInit());
 	Util::throwIfError(hr);
+
+	_testInputLayouts[src] = outLayout;
+	return outLayout;
 }
 
 }
