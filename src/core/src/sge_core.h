@@ -10,6 +10,8 @@
 
 #include "sge_core/allocator/LinearAllocator.h"
 
+#include "sge_core/app/ConsoleApp.h"
+
 #include "sge_core/math/Math.h"
 #include "sge_core/math/Tuple2.h"
 #include "sge_core/math/Tuple3.h"
@@ -18,6 +20,7 @@
 #include "sge_core/math/Vec2.h"
 
 #include "sge_core/file/MemMapFile.h"
+#include "sge_core/file/Directory.h"
 
 #include "sge_core/graph/Color.h"
 
@@ -27,7 +30,8 @@
 #include "sge_core/net/Socket.h"
 #include "sge_core/net/Poll.h"
 
-#include "sge_core/string/UtfUtil.h"
+#include "sge_core/string/String.h"
+#include "sge_core/string/Lexer.h"
 
 #include "sge_core/file/FilePath.h"
 
