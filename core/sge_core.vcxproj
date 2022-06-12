@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{18B75CF8-3003-3715-8B46-64D5164724EE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <VcpkgEnabled>false</VcpkgEnabled>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>sge_core</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sge_core.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">sge_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sge_core.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">sge_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">sge_core.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">sge_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">sge_core.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">sge_core</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4100;4201;4127</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/Debug/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4100;4201;4127</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/Release/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DisableSpecificWarnings>4100;4201;4127</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/MinSizeRel/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4100;4201;4127</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/RelWithDebInfo/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;FMT_LOCALE;FMT_SHARED;JSON_USE_IMPLICIT_CONVERSIONS=1;JSON_DIAGNOSTICS=0;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src;C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/src/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/sinper0079/Documents/RenderProject/SPGameEngine -BC:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows --check-stamp-file C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/src/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/sinper0079/Documents/RenderProject/SPGameEngine -BC:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows --check-stamp-file C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/src/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/sinper0079/Documents/RenderProject/SPGameEngine -BC:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows --check-stamp-file C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/src/core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/sinper0079/Documents/RenderProject/SPGameEngine -BC:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows --check-stamp-file C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\cmake_pch.cxx">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/Debug/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/Release/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/MinSizeRel/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/sge_core.dir/RelWithDebInfo/cmake_pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <Natvis Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\EASTL.natvis">
+    </Natvis>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-config.cpp">
+      <ObjectFileName>$(IntDir)/src/sge_core-config.cpp.obj</ObjectFileName>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-config.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-pch.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\allocator\LinearAllocator.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\allocator\LinearAllocator.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\AppBase.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\AppBase.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\ConsoleApp.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\ConsoleApp.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\BinDeserializer.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\BinSerializer.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\ByteOrder.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\Error.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\Error.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\UnitTest.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\UnitTest.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\sge_base.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\sge_macro.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_compiler_gcc.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_compiler_vc.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_platform.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\Directory.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\Directory.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\File.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\File.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FilePath.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FilePath.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FileStream.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FileStream.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\MemMapFile.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\MemMapFile.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\graph\Color.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\log\Log.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\log\Log.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Math.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Rect2.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple2.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple3.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple4.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Vec2.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\NativeUI.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\NativeUI.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIApp_Base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIApp_Base.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIWindow_Base.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIWindow_Base.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIApp_Win32.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIApp_Win32.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIWindow_Win32.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIWindow_Win32.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\Win32Util.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\Win32Util.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Poll.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Poll.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\SockAddr.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\SockAddr.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Socket.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Socket.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\pointer\ComPtr.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\pointer\SPtr.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonDeserializer.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonSerializer.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonUtil.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonUtil.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-config.cpp">
+      <ObjectFileName>$(IntDir)/src/sge_core/sge_core-config.cpp.obj</ObjectFileName>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-config.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-pch.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Fmt.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Lexer.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Lexer.h" />
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\String.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/Users/sinper0079/Documents/RenderProject/SPGameEngine/build/SimpleGameEngine-x64-windows/src/core/CMakeFiles/sge_core.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\String.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\UtfUtil.h" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\Debug\cmake_pch.hxx" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\Release\cmake_pch.hxx" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\MinSizeRel\cmake_pch.hxx" />
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\RelWithDebInfo\cmake_pch.hxx" />
+    <Natvis Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis">
+    </Natvis>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\ZERO_CHECK.vcxproj">
+      <Project>{8985BC09-2FBC-3A47-ABEF-EC8C9206F3A3}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

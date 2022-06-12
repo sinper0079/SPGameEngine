@@ -1,6 +1,6 @@
 #include "FilePath.h"
 #include "Directory.h"
-#include <sge_core/string/String.h>
+#include <sge_core/string/StringUtil.h>
 
 namespace sge {
 
@@ -8,7 +8,7 @@ StrView FilePath::dirname(StrView path) {
 	auto* end = path.end();
 	auto* begin = path.begin();
 
-	if (end == nullptr) return String();
+	if (end == nullptr) return StrView();
 	auto* p = end - 1;
 	for (; p >= begin; p--) {
 		if (*p == '/' || *p == '\\') {

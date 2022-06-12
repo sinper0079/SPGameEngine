@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\test\CMakeFiles\sge_core_test.dir\cmake_pch.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\base\test_BinSerializer.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\file\test_MemMapFile.cpp">
+      <Filter>src\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\net\test_Socket.cpp">
+      <Filter>src\net</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\string\test_Fmt.cpp">
+      <Filter>src\string</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\string\test_UtfUtil.cpp">
+      <Filter>src\string</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\sge_core_test-pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\test\CMakeFiles\sge_core_test.dir\Debug\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\test\CMakeFiles\sge_core_test.dir\Release\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\test\CMakeFiles\sge_core_test.dir\MinSizeRel\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\test\CMakeFiles\sge_core_test.dir\RelWithDebInfo\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\file\test_MemMapFile.cpp_sample.txt">
+      <Filter>src\file</Filter>
+    </None>
+    <None Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\test\src\string\test_UtfUtil.cpp_sample.txt">
+      <Filter>src\string</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Precompile Header File">
+      <UniqueIdentifier>{4FC88112-E07A-3FD5-8C9D-7D054AC2074D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{22292A7F-3FD7-371A-BAE2-DEDA84FE2EED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{BAFEE022-386F-3FFB-977F-1110CCAFF729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{23217711-5CF8-37EB-BFDE-6487CD54043E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\file">
+      <UniqueIdentifier>{84499158-A73B-3E67-B72A-7D423A21448E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\net">
+      <UniqueIdentifier>{8BF3AE57-FA4D-3143-82C9-BD039D38E05E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\string">
+      <UniqueIdentifier>{2E50E426-43EA-3DD1-81D3-C0D68D118912}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\cmake_pch.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-config.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\allocator\LinearAllocator.cpp">
+      <Filter>src\sge_core\allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\AppBase.cpp">
+      <Filter>src\sge_core\app</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\ConsoleApp.cpp">
+      <Filter>src\sge_core\app</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\Error.cpp">
+      <Filter>src\sge_core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\UnitTest.cpp">
+      <Filter>src\sge_core\base</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\Directory.cpp">
+      <Filter>src\sge_core\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\File.cpp">
+      <Filter>src\sge_core\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FilePath.cpp">
+      <Filter>src\sge_core\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FileStream.cpp">
+      <Filter>src\sge_core\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\MemMapFile.cpp">
+      <Filter>src\sge_core\file</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\log\Log.cpp">
+      <Filter>src\sge_core\log</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\NativeUI.cpp">
+      <Filter>src\sge_core\native_ui</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIApp_Base.cpp">
+      <Filter>src\sge_core\native_ui\base</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIWindow_Base.cpp">
+      <Filter>src\sge_core\native_ui\base</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIApp_Win32.cpp">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIWindow_Win32.cpp">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\Win32Util.cpp">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Poll.cpp">
+      <Filter>src\sge_core\net</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\SockAddr.cpp">
+      <Filter>src\sge_core\net</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Socket.cpp">
+      <Filter>src\sge_core\net</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonUtil.cpp">
+      <Filter>src\sge_core\serializer\json</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-config.cpp">
+      <Filter>src\sge_core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Lexer.cpp">
+      <Filter>src\sge_core\string</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\String.cpp">
+      <Filter>src\sge_core\string</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-config.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core-pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\allocator\LinearAllocator.h">
+      <Filter>src\sge_core\allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\AppBase.h">
+      <Filter>src\sge_core\app</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\app\ConsoleApp.h">
+      <Filter>src\sge_core\app</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\BinDeserializer.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\BinSerializer.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\ByteOrder.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\Error.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\UnitTest.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\sge_base.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\base\sge_macro.h">
+      <Filter>src\sge_core\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_compiler_gcc.h">
+      <Filter>src\sge_core\detect_platform</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_compiler_vc.h">
+      <Filter>src\sge_core\detect_platform</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\detect_platform\sge_detect_platform.h">
+      <Filter>src\sge_core\detect_platform</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\Directory.h">
+      <Filter>src\sge_core\file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\File.h">
+      <Filter>src\sge_core\file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FilePath.h">
+      <Filter>src\sge_core\file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\FileStream.h">
+      <Filter>src\sge_core\file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\file\MemMapFile.h">
+      <Filter>src\sge_core\file</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\graph\Color.h">
+      <Filter>src\sge_core\graph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\log\Log.h">
+      <Filter>src\sge_core\log</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Math.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Rect2.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple2.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple3.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Tuple4.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\math\Vec2.h">
+      <Filter>src\sge_core\math</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\NativeUI.h">
+      <Filter>src\sge_core\native_ui</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIApp_Base.h">
+      <Filter>src\sge_core\native_ui\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\base\NativeUIWindow_Base.h">
+      <Filter>src\sge_core\native_ui\base</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIApp_Win32.h">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\NativeUIWindow_Win32.h">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\native_ui\win32\Win32Util.h">
+      <Filter>src\sge_core\native_ui\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Poll.h">
+      <Filter>src\sge_core\net</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\SockAddr.h">
+      <Filter>src\sge_core\net</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\net\Socket.h">
+      <Filter>src\sge_core\net</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\pointer\ComPtr.h">
+      <Filter>src\sge_core\pointer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\pointer\SPtr.h">
+      <Filter>src\sge_core\pointer</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonDeserializer.h">
+      <Filter>src\sge_core\serializer\json</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonSerializer.h">
+      <Filter>src\sge_core\serializer\json</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\serializer\json\JsonUtil.h">
+      <Filter>src\sge_core\serializer\json</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-config.h">
+      <Filter>src\sge_core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\sge_core-pch.h">
+      <Filter>src\sge_core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Fmt.h">
+      <Filter>src\sge_core\string</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\Lexer.h">
+      <Filter>src\sge_core\string</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\String.h">
+      <Filter>src\sge_core\string</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\sge_core\string\UtfUtil.h">
+      <Filter>src\sge_core\string</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\Debug\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\Release\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\MinSizeRel\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\build\SimpleGameEngine-x64-windows\src\core\CMakeFiles\sge_core.dir\RelWithDebInfo\cmake_pch.hxx">
+      <Filter>Precompile Header File</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\src\core\src\EASTL.natvis">
+      <Filter>src</Filter>
+    </Natvis>
+    <Natvis Include="C:\Users\sinper0079\Documents\RenderProject\SPGameEngine\externals\vcpkg\installed\x64-windows\share\nlohmann_json\nlohmann_json.natvis" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Precompile Header File">
+      <UniqueIdentifier>{4FC88112-E07A-3FD5-8C9D-7D054AC2074D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{22292A7F-3FD7-371A-BAE2-DEDA84FE2EED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{BAFEE022-386F-3FFB-977F-1110CCAFF729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core">
+      <UniqueIdentifier>{9ABE7886-FD37-3967-8C5E-D1A102E27459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\allocator">
+      <UniqueIdentifier>{D0870D75-01E2-3555-944B-1DB75912EF2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\app">
+      <UniqueIdentifier>{78432F4E-2D73-3919-9E89-914A3F507113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\base">
+      <UniqueIdentifier>{17F5185D-FE59-33D7-AD79-A3C56B41C52A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\detect_platform">
+      <UniqueIdentifier>{EDFF2443-AB56-3CBE-9E4F-3B50E9430EEC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\file">
+      <UniqueIdentifier>{0B143AF2-06F9-3F4F-B950-4858A07FB44B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\graph">
+      <UniqueIdentifier>{512BB6D3-B215-3AF7-8DF3-910165948F8C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\log">
+      <UniqueIdentifier>{FA208517-2C7A-3EE7-BCCB-2474B66390C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\math">
+      <UniqueIdentifier>{99D9DEFB-D16F-32E1-8762-2EE0468C5C1C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\native_ui">
+      <UniqueIdentifier>{AA65A6B4-4735-3DB7-A694-E1101C4D2C09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\native_ui\base">
+      <UniqueIdentifier>{309FB9C0-3B71-325A-99A5-EB936E574751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\native_ui\win32">
+      <UniqueIdentifier>{F809DD3C-09DA-319D-9085-587C495A40EE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\net">
+      <UniqueIdentifier>{CBA797E4-F708-3987-A5D3-D8BBDC81978B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\pointer">
+      <UniqueIdentifier>{6F83C76A-EBE7-3094-9BE8-9BDAC829F1C0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\serializer">
+      <UniqueIdentifier>{3C4A5ACF-84D8-3506-A998-C25878D1707A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\serializer\json">
+      <UniqueIdentifier>{49DC91C5-DFE5-3C21-9813-7A361F1269F0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\sge_core\string">
+      <UniqueIdentifier>{91371FEB-FE33-3273-A9F2-12546925DC9F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
