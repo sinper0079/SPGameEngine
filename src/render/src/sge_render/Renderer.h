@@ -12,7 +12,7 @@ struct RenderGpuBuffer_CreateDesc;
 
 class Renderer : public NonCopyable {
 public:
-	static Renderer*	current() { return _current; }
+	static Renderer* instance() { return s_instance; }
 
 	enum class ApiType {
 		None,
@@ -43,7 +43,7 @@ protected:
 	virtual RenderContext*		onCreateContext		(RenderContext_CreateDesc&		desc) = 0;
 	virtual RenderGpuBuffer*	onCreateGpuBuffer	(RenderGpuBuffer_CreateDesc&	desc) = 0;
 
-	static Renderer*	_current;
+	static Renderer* s_instance;
 	RenderAdapterInfo	_adapterInfo;
 	bool _vsync : 1;
 };

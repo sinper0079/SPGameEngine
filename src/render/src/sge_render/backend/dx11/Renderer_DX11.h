@@ -11,7 +11,8 @@ class Renderer_DX11 : public Renderer {
 	using Base = Renderer;
 	using Util = DX11Util;
 public:
-	static Renderer_DX11* current() { return static_cast<Renderer_DX11*>(_current); }
+	static Renderer_DX11* current() { return static_cast<Renderer_DX11*>(shader.ptr());
+	}
 
 	Renderer_DX11(CreateDesc& desc);
 

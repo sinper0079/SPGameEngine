@@ -19,7 +19,7 @@ public:
 //		SGE_DUMP_VAR(sizeof(Vertex_PosColorUv2));
 
 		Base::onCreate(desc);
-		auto* renderer = Renderer::current();
+		auto* renderer = Renderer::instance();
 
 		{
 			RenderContext::CreateDesc renderContextDesc;
