@@ -1,7 +1,17 @@
 #pragma once
 
+#if SGE_CPLUSPLUS_17
+#define SGE_FALLTHROUGH		[[fallthrough]]
+#define SGE_NODISCARD		[[nodiscard]]
+#else
+#define SGE_FALLTHROUGH
+#define SGE_NODISCARD
+#endif
+
+
 #define SGE_COMMA ,
 #define SGE_EMPTY
+#define SGE_ARGS(...) __VA_ARGS__
 #define SGE_STRINGIFY(...)	#__VA_ARGS__
 
 #define SGE_IDENTITY(x) x
@@ -30,9 +40,9 @@
 #define SGE_ASSERT(...)	assert(__VA_ARGS__)
 
 #if _DEBUG
-	#define SGE_LOC	SrcLoc(__FILE__, __LINE__, SGE_FUNC_NAME_SZ)
+#define SGE_LOC	SrcLoc(__FILE__, __LINE__, SGE_FUNC_NAME_SZ)
 #else
-	#define SGE_LOC	SrcLoc()
+#define SGE_LOC	SrcLoc()
 #endif
 
 #define SGE_ENUM_BITWISE_OPERATOR(T) \
@@ -80,7 +90,7 @@
 		using E = T; \
 		switch (v) { \
 			T##_ENUM_LIST(SGE_ENUM_STR__CASE) \
-			default: return nullptr; \
+			default: SGE_ASSERT(false); return ""; \
 		} \
 	} \
 //----

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Shader.h"
+#include <sge_render/buffer/RenderGpuBuffer.h>
 
 namespace sge {
 
