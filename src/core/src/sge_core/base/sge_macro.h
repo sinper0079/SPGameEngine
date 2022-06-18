@@ -1,11 +1,11 @@
 #pragma once
 
 #if SGE_CPLUSPLUS_17
-#define SGE_FALLTHROUGH		[[fallthrough]]
-#define SGE_NODISCARD		[[nodiscard]]
+	#define SGE_FALLTHROUGH		[[fallthrough]]
+	#define SGE_NODISCARD		[[nodiscard]]
 #else
-#define SGE_FALLTHROUGH
-#define SGE_NODISCARD
+	#define SGE_FALLTHROUGH
+	#define SGE_NODISCARD
 #endif
 
 
@@ -40,9 +40,9 @@
 #define SGE_ASSERT(...)	assert(__VA_ARGS__)
 
 #if _DEBUG
-#define SGE_LOC	SrcLoc(__FILE__, __LINE__, SGE_FUNC_NAME_SZ)
+	#define SGE_LOC	SrcLoc(__FILE__, __LINE__, SGE_FUNC_NAME_SZ)
 #else
-#define SGE_LOC	SrcLoc()
+	#define SGE_LOC	SrcLoc()
 #endif
 
 #define SGE_ENUM_BITWISE_OPERATOR(T) \
