@@ -11,7 +11,7 @@
 
 namespace sge {
 
-void ShaderCompiler_DX11::compile(StrView outPath, ShaderStage shaderStage, StrView srcFilename, StrView entryFunc) {
+void ShaderCompiler_DX11::compile(StrView outPath, ShaderStageMask shaderStage, StrView srcFilename, StrView entryFunc) {
 	TempStringA entryPoint = entryFunc;
 
 
@@ -27,7 +27,7 @@ void ShaderCompiler_DX11::compile(StrView outPath, ShaderStage shaderStage, StrV
 	//flags1 |= D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
 #endif
 
-	ComPtr<ID3DBlob>	byteCode;
+	ComPtr<ID3DBlob>	bytecode;
 	ComPtr<ID3DBlob>	errorMsg;
 
 	auto profile = Util::getDxStageProfile(shaderStage);
@@ -38,7 +38,7 @@ void ShaderCompiler_DX11::compile(StrView outPath, ShaderStage shaderStage, StrV
 				entryPoint.c_str(),
 				profile, 
 				flags1, flags2, 0, nullptr, 0,
-				byteCode.ptrForInit(),
+				bytecode.ptrForInit(),
 				errorMsg.ptrForInit());
 
 	if (FAILED(hr)) {

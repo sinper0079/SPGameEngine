@@ -236,7 +236,7 @@ public:
 	};
 	Vector_<Sampler, 8>		samplers;
 
-//----------
+//----------	
 	template<class SE>
 	void onJson(SE & se) {
 		SGE_NAMED_IO(se, profile);

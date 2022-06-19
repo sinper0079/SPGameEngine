@@ -2,6 +2,6 @@
 
 namespace sge {
 
-NativeUIApp* NativeUIApp::_instance;
+NativeUIApp* NativeUIApp::_current;
 
 }

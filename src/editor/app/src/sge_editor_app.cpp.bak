@@ -64,10 +64,10 @@ public:
 	}
 
 	virtual void onCloseButton() override {
-		NativeUIApp::instance()->quit(0);
+		//NativeUIApp::instance()->quit(0);
 	}
 
-	virtual void onUIMouseEvent(UIMouseEvent& ev) override {
+	/*virtual void onUIMouseEvent(UIMouseEvent& ev) override {
 		if (ev.isDragging()) {
 			using Button = UIMouseEventButton;
 			switch (ev.pressedButtons) {
@@ -87,7 +87,7 @@ public:
 				}break;
 			}
 		}
-	}
+	}*/
 
 	virtual void onDraw() {
 		Base::onDraw();
