@@ -163,7 +163,7 @@ protected:
 	}
 
 	Vector_<SPtr<Pass>, 1>	_passes;
- 	SPtr<Shader> _shader;
+	SPtr<Shader> _shader;
 	virtual void onSetShader() {}
 	virtual Pass* onCreatePass(Material* material, ShaderPass* shaderPass) = 0;
 };
