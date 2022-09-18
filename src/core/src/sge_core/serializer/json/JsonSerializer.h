@@ -26,6 +26,8 @@ struct JsonSerializer : public NonCopyable {
 		_stack.emplace_back(&_json);
 	}
 
+	void io(bool& v) { toValue(v); }
+
 	void io(u8&  v) { toValue(v); }
 	void io(u16& v) { toValue(v); }
 	void io(u32& v) { toValue(v); }
@@ -135,12 +137,12 @@ protected:
 
 private:
 	Json&	_json;
-	Vector_<Json*, 64>	_stack;
+	Vector<Json*, 64>	_stack;
 };
 
 template<class T, size_t N>
-struct JsonIO <JsonSerializer, Vector_<T, N>> {
-	static void io(JsonSerializer& se, Vector_<T, N>& data) {
+struct JsonIO <JsonSerializer, Vector<T, N>> {
+	static void io(JsonSerializer& se, Vector<T, N>& data) {
 		se.beginArray();
 		size_t n = data.size();
 		se.resizeArray(n);

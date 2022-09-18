@@ -23,11 +23,14 @@ public:
 	DX11_ID3DDeviceContext* d3dDeviceContext()	{ return _d3dDeviceContext; }
 	DX11_ID3DDebug*			d3dDebug()			{ return _d3dDebug; }
 
-protected:
-	virtual SPtr<RenderContext>		onCreateContext		(RenderContext_CreateDesc&   desc) override;
-	virtual SPtr<RenderGpuBuffer>	onCreateGpuBuffer	(RenderGpuBuffer_CreateDesc& desc) override;
+	void validateContext();
 
-	virtual SPtr<Material>			onCreateMaterial	() override;
+protected:
+	virtual SPtr<RenderContext>		onCreateContext		(RenderContext_CreateDesc&		desc) override;
+	virtual SPtr<RenderGpuBuffer>	onCreateGpuBuffer	(RenderGpuBuffer_CreateDesc&	desc) override;
+	virtual SPtr<Texture2D>			onCreateTexture2D	(Texture2D_CreateDesc&			desc) override;
+
+	virtual SPtr<Material>			onCreateMaterial() override;
 	virtual SPtr<Shader>			onCreateShader		(StrView filename) override;
 	
 	ComPtr<DX11_IDXGIFactory>		_dxgiFactory;

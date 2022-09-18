@@ -3,6 +3,9 @@
 namespace sge {
 
 VertexLayoutManager::VertexLayoutManager() {
+	registerLayout<Vertex_Pos2f>();
+	registerLayout<Vertex_ImGui>();
+
 	registerLayout<Vertex_Pos>();
 	registerLayout<Vertex_PosNormal>();
 
@@ -28,6 +31,9 @@ VertexLayoutManager::VertexLayoutManager() {
 		MY_REGISTER_VERTEX_UV(Vertex_PosColorBinormalUv);
 
 	#undef MY_REGISTER_VERTEX_UV
+
+	registerLayout<Vertex_VertexId>();
+
 }
 
 VertexLayoutManager* VertexLayoutManager::instance() {

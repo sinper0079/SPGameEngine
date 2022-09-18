@@ -89,7 +89,7 @@ void RenderSubMesh::create(const EditMesh& src) {
 
 	auto* vertexLayout = _mesh->vertexLayout();
 
-	Vector_<u8, 1024>	vertexData;
+	Vector<u8, 1024>	vertexData;
 	vertexData.resize(vertexLayout->stride * _vertexCount);
 
 	auto* pData = vertexData.data();
@@ -134,7 +134,7 @@ void RenderSubMesh::create(const EditMesh& src) {
 
 	if (_indexCount > 0) {
 		ByteSpan indexData;
-		Vector_<u16, 1024> index16Data;
+		Vector<u16, 1024> index16Data;
 
 		if (_vertexCount > UINT16_MAX) {
 			_indexType = RenderDataType::UInt32;
@@ -162,6 +162,22 @@ void RenderSubMesh::clear() {
 	_indexBuffer = nullptr;
 	_vertexCount = 0;
 	_indexCount = 0;
+}
+
+void RenderSubMesh::setIndexData(Span<const u16> indexData) {
+	auto* renderer = Renderer::instance();
+
+	auto byteSpan = spanCast<const u8>(indexData);
+
+	RenderGpuBuffer::CreateDesc desc;
+	desc.type = RenderGpuBufferType::Index;
+	desc.bufferSize = byteSpan.size();
+
+	_indexType = RenderDataType::UInt16;
+	_indexCount = indexData.size();
+
+	_indexBuffer = renderer->createGpuBuffer(desc);
+	_indexBuffer->uploadToGpu(byteSpan);
 }
 
 void RenderMesh::setSubMeshCount(size_t newSize) {

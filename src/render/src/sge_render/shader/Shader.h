@@ -24,8 +24,9 @@ struct ShaderPass : public NonCopyable {
 
 	virtual ~ShaderPass() = default;
 
-	ShaderVertexStage* vertexStage() { return _vertexStage; }
-	ShaderPixelStage*  pixelStage()  { return _pixelStage;  } 
+	ShaderVertexStage*	vertexStage() { return _vertexStage; }
+	ShaderPixelStage*	pixelStage()  { return _pixelStage;  } 
+	const ShaderInfo::Pass*	info() const { return _info; }
 
 protected:
 	Shader* _shader = nullptr;
@@ -48,7 +49,7 @@ public:
 protected:
 	String	_filename;
 	ShaderInfo	_info;
-	Vector_<UPtr<ShaderPass>, 1> _passes;
+	Vector<UPtr<ShaderPass>, 2> _passes;
 };
 
 }

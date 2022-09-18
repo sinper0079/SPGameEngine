@@ -50,9 +50,9 @@ void RenderContext_DX11::onCmd_DrawCall(RenderCommand_DrawCall& cmd) {
 	if (!cmd.vertexLayout) { SGE_ASSERT(false); return; }
 
 	auto* vertexBuffer = static_cast<RenderGpuBuffer_DX11*>(cmd.vertexBuffer.ptr());
-	if (!vertexBuffer) { SGE_ASSERT(false); return; }
+//	if (!vertexBuffer) { SGE_ASSERT(false); return; }
 
-	if (cmd.vertexCount <= 0) { SGE_ASSERT(false); return; }
+//	if (cmd.vertexCount <= 0) { SGE_ASSERT(false); return; }
 	if (cmd.primitive == RenderPrimitiveType::None) { SGE_ASSERT(false); return; }
 
 	RenderGpuBuffer_DX11* indexBuffer = nullptr;
@@ -65,8 +65,8 @@ void RenderContext_DX11::onCmd_DrawCall(RenderCommand_DrawCall& cmd) {
 
 	_setTestDefaultRenderState();
 
-	if (cmd.materialPass) {
-		cmd.materialPass->bind(this, cmd.vertexLayout);
+	if (auto* pass = cmd.getMaterialPass()) {
+		pass->bind(this, cmd.vertexLayout);
 	} else {
 		_setTestShaders(cmd.vertexLayout);
 	}
@@ -75,16 +75,20 @@ void RenderContext_DX11::onCmd_DrawCall(RenderCommand_DrawCall& cmd) {
 	ctx->IASetPrimitiveTopology(primitive);
 
 	UINT stride = static_cast<UINT>(cmd.vertexLayout->stride);
-	UINT offset = 0;
+	UINT vertexOffset = static_cast<UINT>(cmd.vertexOffset);
+	UINT indexOffset  = static_cast<UINT>(cmd.indexOffset);
+
 	UINT vertexCount = static_cast<UINT>(cmd.vertexCount);
 	UINT indexCount  = static_cast<UINT>(cmd.indexCount);
 
-	DX11_ID3DBuffer* ppVertexBuffers[] = { vertexBuffer->d3dBuf() };
-	ctx->IASetVertexBuffers(0, 1, ppVertexBuffers, &stride, &offset);
+	DX11_ID3DBuffer* ppVertexBuffers[] = { vertexBuffer ? vertexBuffer->d3dBuf() : nullptr };
+	ctx->IASetVertexBuffers(0, 1, ppVertexBuffers, &stride, &vertexOffset);
+
+//	_renderer->validateContext();
 
 	if (indexCount > 0) {
 		auto indexType = Util::getDxFormat(cmd.indexType);
-		ctx->IASetIndexBuffer(indexBuffer->d3dBuf(), indexType, 0);
+		ctx->IASetIndexBuffer(indexBuffer->d3dBuf(), indexType, indexOffset);
 		ctx->DrawIndexed(indexCount, 0, 0);
 	} else {
 		ctx->Draw(vertexCount, 0);
@@ -158,10 +162,12 @@ void RenderContext_DX11::onBeginRender() {
 	ctx->OMSetRenderTargets(1, rt, _depthStencilView);
 
 	D3D11_VIEWPORT viewport = {};
-	viewport.TopLeftX	 = 0;
-	viewport.TopLeftY	 = 0;
-	viewport.Width		 = _frameBufferSize.x;
-	viewport.Height		 = _frameBufferSize.y;
+	viewport.TopLeftX	= 0;
+	viewport.TopLeftY	= 0;
+	viewport.Width		= _frameBufferSize.x;
+	viewport.Height		= _frameBufferSize.y;
+	viewport.MinDepth	= 0;
+	viewport.MaxDepth	= 1;
 
 	ctx->RSSetViewports(1, &viewport);
 }
@@ -297,7 +303,7 @@ DX11_ID3DInputLayout* RenderContext_DX11::_getTestInputLayout(const VertexLayout
 		return it->second;
 	}
 
-	Vector_<D3D11_INPUT_ELEMENT_DESC, 32> inputDesc;
+	Vector<D3D11_INPUT_ELEMENT_DESC, 32> inputDesc;
 
 	for (auto& e : src->elements) {
 		auto& dst = inputDesc.emplace_back();

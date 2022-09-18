@@ -3,37 +3,27 @@
 #include <sge_render/RenderDataType.h>
 #include <sge_render/vertex/Vertex.h>
 #include <sge_core/serializer/json/JsonUtil.h>
+#include "RenderState.h"
 
 namespace sge {
 
-
-
 enum class ShaderStageMask {
 	None,
-	Vertex = 1 << 0,
-	Pixel = 1 << 1, //pixel shift left x2 , why ?
-};
-
-
-enum class ShaderPropType {
-	None,
-	Int,
-	Float,
-	Vec2f,
-	Vec3f,
-	Vec4f,
-	Color4f,
+	Vertex	= 1 << 0,
+	Pixel	= 1 << 1,
 };
 
 #define ShaderPropType_ENUM_LIST(E) \
-	E(Int) \
-	E(Float) \
-	E(Vec2f) \
-	E(Vec3f) \
-	E(Vec4f) \
-	E(Color4f) \
+	E(None,) \
+	E(Int,) \
+	E(Float,) \
+	E(Vec2f,) \
+	E(Vec3f,) \
+	E(Vec4f,) \
+	E(Color4f,) \
+	E(Texture2D,) \
 //----
-SGE_ENUM_STR_UTIL(ShaderPropType)
+SGE_ENUM_CLASS(ShaderPropType, u8)
 
 struct ShaderPropTypeUtil {	
 	ShaderPropTypeUtil() = delete;
@@ -48,29 +38,6 @@ struct ShaderPropTypeUtil {
 //	template<> static constexpr	Type get<Vec3f>()	{ return Type::Vec3f; }
 //	template<> static constexpr	Type get<Vec4f>()	{ return Type::Vec4f; }
 	template<> static constexpr	Type get<Color4f>()	{ return Type::Color4f; }
-};
-
-struct ShaderPropValueConstPtr {
-	using Type = ShaderPropType;
-	Type	type = Type::None;
-	const void*	data = nullptr;
-	size_t	dataSize = 0;
-
-	ShaderPropValueConstPtr() = default;
-	
-	template<class V>
-	ShaderPropValueConstPtr(const V& v) {
-		type = ShaderPropTypeUtil::get<V>();
-		data = &v;
-		dataSize = sizeof(v);
-	}
-
-	template<class V>
-	const V& asValue() {
-		if (type != ShaderPropTypeUtil::get<V>())
-			throw SGE_ERROR("invalid type");
-		return *reinterpret_cast<const V*>(data);
-	}
 };
 
 struct ShaderInfo {
@@ -92,17 +59,19 @@ struct ShaderInfo {
 		String name;
 		String vsFunc;
 		String psFunc;
+		RenderState	renderState;
 
 		template<class SE>
 		void onJson(SE & se) {
 			SGE_NAMED_IO(se, name);
 			SGE_NAMED_IO(se, vsFunc);
 			SGE_NAMED_IO(se, psFunc);
+			SGE_NAMED_IO(se, renderState);
 		}
 	};
 
-	Vector_<Prop, 8>	props;
-	Vector_<Pass, 1>	passes;
+	Vector<Prop, 8>	props;
+	Vector<Pass, 1>	passes;
 
 	void clear();
 
@@ -177,7 +146,7 @@ public:
 		i16				bindPoint = 0;
 		i16				bindCount = 0;
 		size_t			dataSize  = 0;
-		Vector_<Variable, 4>	variables;
+		Vector<Variable, 4>	variables;
 
 		template<class SE>
 		void onJson(SE & se) {
@@ -196,9 +165,9 @@ public:
 		}
 	};
 
-	Vector_<Input, 8>		inputs;
-	Vector_<Param, 8>		params;
-	Vector_<ConstBuffer, 4>	constBuffers;
+	Vector<Input, 8>		inputs;
+	Vector<Param, 8>		params;
+	Vector<ConstBuffer, 4>	constBuffers;
 
 //----------
 	class Texture {
@@ -216,7 +185,7 @@ public:
 			SGE_NAMED_IO(se, dataType);
 		}
 	};
-	Vector_<Texture, 8>		textures;
+	Vector<Texture, 8>		textures;
 
 //----------
 	class Sampler {
@@ -234,9 +203,9 @@ public:
 			SGE_NAMED_IO(se, dataType);
 		}
 	};
-	Vector_<Sampler, 8>		samplers;
+	Vector<Sampler, 8>		samplers;
 
-//----------	
+//----------
 	template<class SE>
 	void onJson(SE & se) {
 		SGE_NAMED_IO(se, profile);

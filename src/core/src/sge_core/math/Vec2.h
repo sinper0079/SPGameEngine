@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vec2.h"
 #include "Vec2_Basic.h"
 #include "Vec2_SSE.h"
 
@@ -16,5 +15,6 @@ namespace sge {
 
 using Vec2f = Vec2<float>;
 using Vec2d = Vec2<double>;
+using Vec2i = Vec2<i32>;
 
 }

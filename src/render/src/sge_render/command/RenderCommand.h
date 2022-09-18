@@ -8,6 +8,7 @@ namespace sge {
 
 class RenderMesh;
 class RenderSubMesh;
+class RenderTerrain;
 
 enum class RenderCommandType {
 	None,
@@ -45,8 +46,8 @@ public:
 	This& dontClearColor() { color.reset(); return *this; }
 	This& dontClearDepth() { depth.reset(); return *this; }
 
-	Opt<Color4f> color = Color4f(1,1,1,1);
-	Opt<float>   depth = 0;
+	Opt<Color4f>	color = Color4f(1,1,1,1);
+	Opt<float>		depth = 1;
 };
 
 class RenderCommand_SwapBuffers : public RenderCommand {
@@ -67,25 +68,19 @@ public:
 	SPtr<RenderGpuBuffer>	vertexBuffer;
 	SPtr<RenderGpuBuffer>	indexBuffer;
 
-	SPtr<MaterialPass>		materialPass;
+	SPtr<Material>			material;
+	size_t					materialPassIndex = 0;
 
-	size_t vertexCount = 0;
-	size_t indexCount = 0;
+	MaterialPass*			getMaterialPass() { return material ? material->getPass(materialPassIndex) : nullptr; }
+
+	size_t vertexOffset		= 0;
+	size_t vertexCount		= 0;
+	size_t indexOffset		= 0;
+	size_t indexCount		= 0;
 };
 
 class RenderCommandBuffer : public NonCopyable {
 public:
-	RenderCommand_ClearFrameBuffers* clearFrameBuffers() {
-		return newCommand<RenderCommand_ClearFrameBuffers>();
-	}
-
-	RenderCommand_SwapBuffers* swapBuffers() {
-		return newCommand<RenderCommand_SwapBuffers>();
-	}
-
-	void drawMesh	(const SrcLoc& debugLoc, const RenderMesh&    mesh,	   Material* material);
-	void drawSubMesh(const SrcLoc& debugLoc, const RenderSubMesh& subMesh, Material* material);
-
 	void reset();
 
 	Span<RenderCommand*>	commands() { return _commands; }
@@ -99,7 +94,7 @@ public:
 	}
 
 private:
-	Vector_<RenderCommand*, 64>	_commands;
+	Vector<RenderCommand*, 64>	_commands;
 
 	LinearAllocator _allocator;
 };
