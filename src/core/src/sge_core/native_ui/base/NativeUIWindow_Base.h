@@ -30,7 +30,7 @@ public:
 		Type		type = Type::NormalWindow;
 		Rect2f		rect {10, 10, 640, 480};
 
-		bool		titleBar		: 1;
+		bool		titleBar		: 1;   // bit field to save memory, only need 2 bit in general 
 		bool		isMainWindow	: 1;
 		bool		visible			: 1;
 		bool		resizable		: 1;
@@ -44,12 +44,16 @@ public:
 	void create			(CreateDesc& desc)	{ onCreate(desc); }
 	void setWindowTitle	(StrView title)		{ onSetWindowTitle(title); }
 
+	void drawNeeded() { onDrawNeeded(); }
+
 	virtual void onCloseButton() {}
 	virtual void onActive(bool isActive) {}
+	virtual void onDraw() {}
 
 protected:
 	virtual void onCreate(CreateDesc& desc) {}
 	virtual void onSetWindowTitle(StrView title) {}
+	virtual void onDrawNeeded() {}
 };
 
 }

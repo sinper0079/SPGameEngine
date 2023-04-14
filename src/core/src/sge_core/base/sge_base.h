@@ -161,6 +161,41 @@ private:
 	void operator=(const NonCopyable&) = delete;
 };
 
+template <class T>
+class ComPtr : NonCopyable {
+public:
+	ComPtr () = default; 
+	ComPtr (const ComPtr& r) {ref (r._p) } // copy contructor 
+	//noexcept - the function is declared not to throw any exceptions.
+	~ComPtr() noexcept {reset (nullptr) } //reset to nullptr on dtor
+
+	T* operator->() noexcept { return _p; }
+	operator T* () noexcept { return _p; }
+
+	T* ptr() noexcept { return _p; }
+	const	T* ptr() const noexcept { return _p; }
+
+	void reset (T* p){
+		if (p== _p) return; // no need reset if already nullptr 
+		if(_p){
+			_p->Release(); // automatically release com object, Release() to properly manage the object lifetime
+			_p = nullptr; // After calling Release(), to be sure that you don't have a dangling reference to a previously released COM object
+		}
+		if (_p) {
+			_p->AddRef();//assign ptr add Ref count , DX11 obj auto add ref no need to add ?
+		}
+	}
+
+	T** ptrForInit() noexcept { reset(nullptr); return &_p; }
+
+	T* detach() { T* o = _p; _ p = nullptr; return o; }
+
+private:
+	T* _p = nullptr;
+};
+
+
+
 template<class T> inline void sge_delete(T* p) { delete p; }
 
 } // namespace
