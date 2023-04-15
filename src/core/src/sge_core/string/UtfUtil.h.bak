@@ -32,7 +32,7 @@ private:
 
 	template<size_t N>
 	static void _appendChar(String_<N>&  dst, uint32_t  ch) { _appendCharA(dst, ch); }
-	static void _appendChar(String&      dst, uint32_t  ch) { _appendCharA(dst, ch); }
+	static void _appendChar(String&     //_t  ch) { _appendCharA(dst, ch); }
 
 	template<size_t N>
 	static void _appendChar(StringW_<N>& dst, uint32_t  ch) { _appendCharW(dst, ch); }

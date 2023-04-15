@@ -41,7 +41,7 @@ public:
 		bool		alwaysOnTop		: 1;
 	};
 
-	void create			(CreateDesc& desc)	{ onCreate(desc); }
+	void create			(CreateDesc& desc)	{ onCreate(desc); } //onCreate for more easy add code 
 	void setWindowTitle	(StrView title)		{ onSetWindowTitle(title); }
 
 	void drawNeeded() { onDrawNeeded(); }

@@ -3,7 +3,6 @@
 namespace sge {
 
 class MainWin : public NativeUIWindow {
-	using Base = NativeUIWindow;
 public:
 	void onCreate(CreateDesc& desc) {
 		Base::onCreate(desc);
@@ -42,20 +41,20 @@ public:
 			auto dir = getCurrentDir();
 			SGE_LOG("dir = {}", dir);
 		}
-
+	
 		Base::onCreate(desc);
 
 		Renderer::CreateDesc renderDesc;
 		//renderDesc.apiType = OpenGL;
 		Renderer::create(renderDesc);
 
-	//---
+		//---
 		NativeUIWindow::CreateDesc winDesc;
 		winDesc.isMainWindow = true;
 		_mainWin.create(winDesc);
 		_mainWin.setWindowTitle("SGE Editor");
-
 	}
+
 
 private:
 	MainWin		_mainWin;

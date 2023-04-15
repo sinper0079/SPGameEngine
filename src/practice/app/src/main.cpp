@@ -5,9 +5,21 @@ using namespace sge;
 #define TEST(...)   do{   PrintFuc(  __VA_ARGS__); } while(false) 
 using namespace std;
 template<class... Args>
-void PrintFuc(Args&&... args) { //see why && in later chapter
+void PrintFuc(Args&&... args) { //see why && in later chapter, as I rmb is fwd sth
 	cout << sizeof...(args) << endl;
 }
+
+class Optr {
+
+public:
+
+	Optr() = default;
+	Optr( int a ) : _a(a){} // : _a(a) set member variables 
+	Optr operator+(const Optr& r) const { return Optr(_a + r._a); }
+
+  int _a = 1;
+};
+
 
 void PrintStrView(StrView sth) {
 	TempString SthStr(sth);
@@ -18,6 +30,10 @@ class ClassA{
 public:
 	inline void print(){SGE_LOG("TEST");}
 };
+
+
+
+
 
 void week1(){
 	int a = 10;
@@ -36,8 +52,11 @@ int main() {
 	//week1::week1();
 	Base clsA;
 
+	Optr OptrA; 
+	Optr OptrB;
+	Optr OptrC = OptrA + OptrB;
 
-
+	SGE_LOG("test {}", OptrC._a);
 
 	clsA.print();
 	TEST(1,1,2);
