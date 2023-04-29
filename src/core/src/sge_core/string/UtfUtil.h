@@ -1,6 +1,5 @@
 #pragma once
 
-#include "String.h"
 #include "../base/Error.h"
 // Format, and it is a character encoding standard that represents all possible characters in the Unicode character set. UTF-8, UTF-16, and UTF-32 are three common encodings in the UTF family.
 namespace sge {

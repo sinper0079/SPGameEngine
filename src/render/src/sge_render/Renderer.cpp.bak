@@ -19,7 +19,7 @@ Renderer::CreateDesc::CreateDesc() {
 Renderer* Renderer::create(CreateDesc& desc) {
 	Renderer* p = nullptr;
 	switch (desc.apiType) {
-	//	case ApiType::DX11: p = new Renderer_DX11(desc); break;
+		case ApiType::DX11: p = new Renderer_DX11(desc); break;
 		default: throw SGE_ERROR("unsupport graphic api");
 	}
 

@@ -1,4 +1,4 @@
-#include <sge_core\base\sge_base.h>
+
 
 namespace week1 {
 using namespace sge;
@@ -26,10 +26,19 @@ void PrintStrView(StrView sth) {
 	SGE_LOG(SthStr.c_str());
 }
 
+void testStringView() {
+	char a[] = "let me try sth";
+	char* b ="haha";
+	StrView str(a, 5); //pointer + size
+	SGE_LOG("test {}", str);
+}
+
+
 class ClassA{
 public:
 	inline void print(){SGE_LOG("TEST");}
 };
+
 
 
 
@@ -62,7 +71,7 @@ int main() {
 	TEST(1,1,2);
 	
 	char* c ="haha";
-
+	testStringView();
 	PrintStrView(c);
 	
 	return 0;
