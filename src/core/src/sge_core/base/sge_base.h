@@ -3,18 +3,16 @@
 #include "../detect_platform/sge_detect_platform.h"
 
 #if SGE_OS_WINDOWS
-#define NOMINMAX 1
-
-#include <WinSock2.h> // WinSock2.h must include before windows.h to avoid winsock1 define
-#include <ws2tcpip.h> // struct sockaddr_in6
-#pragma comment(lib, "Ws2_32.lib")
-
-#include <Windows.h>
+	#define NOMINMAX 1
+	#include <WinSock2.h> // WinSock2.h must include before windows.h to avoid winsock1 define
+	#include <ws2tcpip.h> // struct sockaddr_in6
+	#pragma comment(lib, "Ws2_32.lib")
+	#include <Windows.h>
 #else
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netdb.h>
-#include <netinet/in.h> // struct sockaddr_in
+	#include <sys/types.h>
+	#include <sys/socket.h>
+	#include <netdb.h>
+	#include <netinet/in.h> // struct sockaddr_in
 #endif
 
 #include <cassert>
@@ -22,6 +20,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstdint>
+#include <atomic>
 
 #include <EASTL/vector.h>
 #include <EASTL/fixed_vector.h>
@@ -30,8 +29,11 @@
 #include <EASTL/string_view.h>
 #include <EASTL/span.h>
 
+#include <EASTL/optional.h>
+
 #include <EASTL/map.h>
 #include <EASTL/hash_map.h>
+#include <EASTL/unordered_map.h>
 #include <EASTL/string_map.h>
 
 #include <EASTL/unique_ptr.h>
@@ -84,14 +86,23 @@ using f32 = float;
 using f64 = double;
 using f128 = long double;
 
+template< class Obj, class Member > constexpr
+intptr_t memberOffset(Member Obj::*ptrToMember) {
+	Obj* c = nullptr;
+	Member* m = &(c->*ptrToMember);
+	return reinterpret_cast<intptr_t>(m);
+}
+
 template<class T> using UPtr = eastl::unique_ptr<T>;
-template<class T> using SPtr = eastl::shared_ptr<T>;
-template<class T> using WPtr = eastl::weak_ptr<T>;
 
 template<class T> using Span = eastl::span<T>;
 template<class T, size_t N, bool bEnableOverflow = true> using Vector_ = eastl::fixed_vector<T, N, bEnableOverflow>;
 
 template<class T> using Vector = eastl::vector<T>;
+template<class KEY, class VALUE> using Map = eastl::map<KEY, VALUE>;
+template<class KEY, class VALUE> using UnorderedMap = eastl::unordered_map<KEY, VALUE>;
+
+template<class T> using Opt = eastl::optional<T>;
 
 template<class T> using StrViewT = eastl::basic_string_view<T>;
 using StrViewA = StrViewT<char>;
@@ -161,50 +172,15 @@ private:
 	void operator=(const NonCopyable&) = delete;
 };
 
-template <class T>
-class ComPtr : NonCopyable { //work like shareptr 
+class RefCountBase : public NonCopyable {
 public:
-	ComPtr () = default; 
-	ComPtr (const ComPtr& r) {ref (r._p) } // copy contructor 
-	//noexcept - the function is declared not to throw any exceptions.
-	~ComPtr() noexcept {reset (nullptr); } //reset to nullptr on dtor
-
-	T* operator->() noexcept { return _p; } //convert the Com pointer to a raw pointer when ->
-	operator T* () noexcept { return _p; }  //convert the Com pointer to a raw pointer when  T* _depthStencil
-
-	T* ptr() noexcept { return _p; } //_depthStencil.ptr()
-	const	T* ptr() const noexcept { return _p; }
-
-	void reset (T* p){
-		if (p== _p) return; // no need reset if already nullptr 
-		if(_p){
-			_p->Release(); // automatically release com object, Release() to properly manage the object lifetime
-			_p = nullptr; // After calling Release(), to be sure that you don't have a dangling reference to a previously released COM object
-		}
-		if (_p) {
-			_p->AddRef();//assign ptr add Ref count , DX11 obj create add first reference count
-		}
-	}
-
-	T** ptrForInit() noexcept { reset(nullptr); return &_p; }
-
-	// as the DX11 need a pointer of pointer 
-	//virtual HRESULT STDMETHODCALLTYPE CreateDepthStencilView(
-	//	/* [annotation] */
-	//	_In_  ID3D11Resource* pResource,
-	//	/* [annotation] */
-	//	_In_opt_  const D3D11_DEPTH_STENCIL_VIEW_DESC* pDesc,
-	//	/* [annotation] */
-	//	_COM_Outptr_opt_  ID3D11DepthStencilView** ppDepthStencilView) = 0;
-
-
-	T* detach() { T* o = _p; _ p = nullptr; return o; } // detach return the ptr and set comptr to nullptr 
-
-private:
-	T* _p = nullptr;
+	std::atomic_int	_refCount = 0;//for atmoic operations which can not be interrupt
 };
 
-
+class Object : public RefCountBase {
+public:
+	virtual ~Object() = default;
+};
 
 template<class T> inline void sge_delete(T* p) { delete p; }
 

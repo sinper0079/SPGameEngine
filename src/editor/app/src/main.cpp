@@ -1,5 +1,10 @@
 #include <sge_editor.h>
 
+#include <sge_render/mesh/RenderMesh.h>
+#include <sge_render/command/RenderCommand.h>
+#include <sge_render/vertex/Vertex.h>
+#include <sge_render/vertex/VertexLayoutManager.h>
+
 namespace sge {
 
 class MainWin : public NativeUIWindow {
@@ -59,7 +64,6 @@ public:
 
 private:
 	MainWin		_mainWin;
-	//UPtr<Render>
 };
 
 }

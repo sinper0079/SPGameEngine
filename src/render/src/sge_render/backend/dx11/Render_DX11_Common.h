@@ -49,8 +49,7 @@ struct DX11Util {
 		if (!_checkError(hr)) { reportError(); throw SGE_ERROR("HRESULT = {}", hr); }
 	}
 	static bool assertIfError	(HRESULT hr) {
-		if (!_checkError(hr)) { reportError(); SGE_ASSERT(false); 
-		return false; }
+		if (!_checkError(hr)) { reportError(); SGE_ASSERT(false); return false; }
 		return true;
 	}
 	static void reportError();
@@ -61,9 +60,7 @@ struct DX11Util {
 
 private:
 	static bool _checkError(HRESULT hr) {
-		if (FAILED(hr))
-			return false;
-		return true;
+		return SUCCEEDED(hr);
 	}
 };
 
